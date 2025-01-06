@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Create a Llama - Llama Generator</title>
+  <title>Bear Generator (BG)</title>
   <!-- Fun retro font -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
     /* ====== BODY & GLOBAL STYLES ====== */
     body {
       font-family: 'Press Start 2P', cursive;
-      background: linear-gradient(135deg, #ffe1f0, #b3e0ff),
-                  url('https://yourimageurl.com/llama-park-background.jpg');
+      /* Pastel gradient with an optional background image */
+      background: linear-gradient(135deg, #fff6e8, #f6f9ff),
+                  url('https://yourimageurl.com/bear-forest-background.jpg');
       background-repeat: no-repeat;
       background-size: cover;
       background-blend-mode: lighten;
-      color: #1f1f1f;
+      color: #333;
       text-align: center;
       margin: 0;
       padding: 0;
@@ -31,7 +32,7 @@
     }
     .hero h1 {
       font-size: 2.5em;
-      color: #ff8c00; /* Bright orange */
+      color: #30475e; /* Deep slate-blue */
       text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.7);
       margin-bottom: 20px;
     }
@@ -40,13 +41,13 @@
       margin: 20px auto;
       max-width: 600px;
       line-height: 1.4;
-      color: #333;
+      color: #555;
     }
     .hero .links {
       margin-top: 20px;
     }
     .hero a {
-      color: #1e90ff; /* Bright blue */
+      color: #ff686b; /* Soft red/pink */
       font-size: 0.9em;
       margin: 0 10px;
       padding: 6px 8px;
@@ -54,14 +55,15 @@
       transition: all 0.3s ease;
     }
     .hero a:hover {
-      background: #1e90ff;
+      background: #ff686b;
       color: #fff;
     }
+    /* Decorative emoji before navigation links */
     .hero a[href="#how-it-works"]::before {
-      content: "🦙 ";
+      content: "🐻 ";
     }
-    .hero a[href="#llama-lore"]::before {
-      content: "🦙 ";
+    .hero a[href="#bear-lore"]::before {
+      content: "🐻 ";
     }
 
     /* ====== WALLET CONNECT BUTTON ====== */
@@ -71,16 +73,16 @@
     .wallet-connect button {
       font-size: 1em;
       padding: 12px 24px;
-      background: #00bfff; /* Deep sky blue */
+      background: #5141fa; /* Phantom Purple */
       color: #fff;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 191, 255, 0.2);
+      box-shadow: 0 4px 8px rgba(81, 65, 250, 0.2);
       transition: background 0.3s, transform 0.2s;
     }
     .wallet-connect button:hover {
-      background: #008b8b;
+      background: #443ec5;
       transform: translateY(-2px);
     }
     .wallet-address {
@@ -94,8 +96,8 @@
     .generator {
       margin: 30px auto;
       padding: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px dashed #ff00ff; /* Bright magenta */
+      background: rgba(255, 255, 255, 0.8);
+      border: 2px dashed #ff686b;
       border-radius: 15px;
       display: inline-block;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -106,26 +108,26 @@
       width: 300px;
       margin: 10px;
       border-radius: 8px;
-      border: 2px solid #ff00ff;
+      border: 2px solid #ff686b;
       outline: none;
       transition: border 0.3s;
     }
     .generator input:focus {
-      border-color: #ff6347; /* Tomato red */
+      border-color: #30475e;
     }
     .generator button {
       font-size: 1em;
       padding: 10px 20px;
-      background: #ff00ff;
+      background: #ff686b;
       color: #fff;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 4px 8px rgba(255, 0, 255, 0.2);
+      box-shadow: 0 4px 8px rgba(255, 104, 107, 0.2);
       transition: background 0.3s, transform 0.2s;
     }
     .generator button:hover {
-      background: #db009e;
+      background: #e35457;
       transform: translateY(-2px);
     }
 
@@ -142,8 +144,8 @@
     .spinner {
       width: 50px;
       height: 50px;
-      border: 5px solid #ffe1f0;
-      border-top: 5px solid #1e90ff;
+      border: 5px solid #fff6e8;
+      border-top: 5px solid #30475e;
       border-radius: 50%;
       animation: spin 1s linear infinite;
       margin: 0 auto;
@@ -153,22 +155,22 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* ====== LLAMA SHOWCASE ====== */
-    .gnome-showcase {
+    /* ====== BEAR SHOWCASE ====== */
+    .bear-showcase {
       margin: 50px 0;
     }
-    .gnome-showcase h2 {
-      color: #ff8c00; /* Bright orange */
+    .bear-showcase h2 {
+      color: #30475e;
       font-size: 1.8em;
       margin-bottom: 20px;
     }
 
-    /* ====== SINGLE LLAMA DISPLAY ====== */
-    .gnome {
+    /* ====== SINGLE BEAR DISPLAY ====== */
+    .bear {
       display: inline-block;
       margin: 20px;
       padding: 15px;
-      border: 2px solid #ff6347;
+      border: 2px solid #30475e;
       border-radius: 10px;
       background: #fff;
       color: #333;
@@ -181,15 +183,15 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
       transition: transform 0.2s;
     }
-    .gnome:hover {
+    .bear:hover {
       transform: translateY(-2px);
     }
-    .gnome p {
+    .bear p {
       margin: 5px 0;
       line-height: 1.4;
     }
 
-    /* ====== BUTTONS INSIDE LLAMA ====== */
+    /* ====== BUTTONS INSIDE BEAR ====== */
     .download-btn,
     .share-btn {
       margin-top: 10px;
@@ -211,7 +213,7 @@
       transform: translateY(-2px);
     }
     .share-btn {
-      background: #1DA1F2;
+      background: #1DA1F2; /* Twitter / X Blue */
       color: #fff;
       box-shadow: 0 2px 5px rgba(29, 161, 242, 0.2);
     }
@@ -284,11 +286,11 @@
       padding: 0;
     }
     .info-section ol li::before {
-      content: "🦙 ";
+      content: "🐻 ";
       margin-right: 5px;
     }
 
-    /* ====== LORE GRID ====== */
+    /* ====== BEAR GRID ====== */
     .lore-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -324,7 +326,7 @@
       .generator input {
         width: 80%;
       }
-      .gnome {
+      .bear {
         width: 90%;
       }
       .lore-grid {
@@ -337,11 +339,11 @@
 
   <!-- Hero Section -->
   <div class="hero">
-    <h1>Create a Llama</h1>
-    <p>Connect your Phantom wallet and adopt your very own ASCII-styled Llama!</p>
+    <h1>Create a Bear</h1>
+    <p>Connect your Phantom wallet and adopt your very own ASCII-styled Bear!</p>
     <div class="links">
       <a href="#how-it-works">How It Works</a>
-      <a href="#llama-lore">Llama Breeds & Traits</a>
+      <a href="#bear-lore">Bear Breeds & Traits</a>
     </div>
   </div>
 
@@ -353,21 +355,21 @@
 
   <!-- Generator -->
   <div class="generator" id="generator-section" style="display: none;">
-    <label for="llama-id" style="display:none;">Llama ID</label>
-    <input type="text" id="llama-id" placeholder="Enter your unique ID...">
-    <button id="generate-button">Adopt My Llama</button>
+    <label for="bear-id" style="display:none;">Bear ID</label>
+    <input type="text" id="bear-id" placeholder="Enter your unique ID...">
+    <button id="generate-button">Adopt My Bear</button>
   </div>
 
   <!-- Loading Spinner -->
   <div class="loading-container" id="loading-container">
     <div class="spinner"></div>
-    <p class="loading-text">Retrieving Your Llama...</p>
+    <p class="loading-text">Retrieving Your Bear...</p>
   </div>
 
-  <!-- Llama Showcase -->
-  <div class="gnome-showcase" id="llama-showcase" style="display: none;">
-    <h2>Your Llama Companion</h2>
-    <!-- Generated Llama will appear here -->
+  <!-- Bear Showcase -->
+  <div class="bear-showcase" id="bear-showcase" style="display: none;">
+    <h2>Your Bear Companion</h2>
+    <!-- Generated Bear will appear here -->
   </div>
 
   <!-- Log Area -->
@@ -376,76 +378,57 @@
   <!-- How It Works Section -->
   <div class="info-section" id="how-it-works">
     <h2>How It Works</h2>
-    <p>Each Llama is uniquely generated from your wallet address and an optional unique ID you provide. Here’s a simple breakdown:</p>
+    <p>Each Bear is uniquely generated from your wallet address and an optional unique ID you provide. Here’s a simple breakdown:</p>
     <ol>
       <li><strong>Connect Wallet:</strong> Use your Phantom wallet to connect securely.</li>
       <li><strong>ID Input:</strong> Enter a unique ID or simply use your wallet address.</li>
       <li><strong>Hashing Process:</strong> Your wallet address and ID transform into a numerical value using our special hashing function.</li>
-      <li><strong>Attribute Assignment:</strong> This determines your Llama’s breed, fur color, personality trait, accessory, and “obedience level.”</li>
-      <li><strong>Deterministic Results:</strong> The same wallet and ID always adopt the same Llama—uniquely yours!</li>
+      <li><strong>Attribute Assignment:</strong> This determines your Bear’s breed, fur color, personality trait, accessory, and “observation level.”</li>
+      <li><strong>Deterministic Results:</strong> The same wallet and ID always adopt the same Bear—uniquely yours!</li>
     </ol>
-    <p>This approach blends fun with a touch of code magic, giving you a special ASCII Llama pal tied directly to your wallet and ID!</p>
+    <p>This approach blends fun with a touch of code magic, giving you a special ASCII Bear pal tied directly to your wallet and ID!</p>
   </div>
 
-  <!-- Llama Breeds & Traits Section -->
-  <div class="info-section" id="llama-lore">
-    <h2>Llama Breeds & Traits</h2>
-    <p>From peaceful llamas to playful companions, each llama breed comes with its own special quirks. Here are a few of our ASCII-inspired llama friends:</p>
+  <!-- Bear Breeds & Traits Section -->
+  <div class="info-section" id="bear-lore">
+    <h2>Bear Breeds & Traits</h2>
+    <p>From friendly giants to grizzly warriors, each bear breed comes with its own special quirks. Here are a few of our ASCII-inspired bear friends:</p>
 
     <!-- Lore Grid -->
     <div class="lore-grid">
       <div class="lore-item">
-        <h4>Alpaca</h4>
-        <p>Famous for their soft fur and gentle nature. Shy and friendly.</p>
+        <h4>Grizzly Bear</h4>
+        <p>Strong, powerful, and fierce. Always ready to defend its territory.</p>
       </div>
       <div class="lore-item">
-        <h4>Andean Llama</h4>
-        <p>Strong and rugged, perfect for high altitudes. Known for their endurance.</p>
+        <h4>Panda</h4>
+        <p>Gentle and calm, but always hungry! Loves bamboo and naps.</p>
       </div>
       <div class="lore-item">
-        <h4>Wild Llama</h4>
-        <p>Free-roaming, tough, and independent. Not afraid of a challenge!</p>
-      </div>
-      <div class="lore-item">
-        <h4>Criollo Llama</h4>
-        <p>Traditionally used for carrying goods, they have incredible stamina.</p>
-      </div>
-      <div class="lore-item">
-        <h4>Mini Llama</h4>
-        <p>Smaller in size, but full of personality. Great for cuddles!</p>
-      </div>
-      <div class="lore-item">
-        <h4>Guard Llama</h4>
-        <p>Known for their protective nature, these llamas are natural guardians.</p>
-      </div>
-      <div class="lore-item">
-        <h4>Show Llama</h4>
-        <p>Graceful, with beautiful fur and a calm demeanor, often seen in competitions.</p>
-      </div>
-      <div class="lore-item">
-        <h4>Pack Llama</h4>
-        <p>Used in groups to carry heavy loads. Strong and reliable.</p>
+        <h4>Black Bear</h4>
+        <p>Agile and quick, with a soft yet determined personality.</p>
       </div>
     </div>
 
     <h3>Rarity and Collectibility</h3>
-    <p>Some Llamas might develop rare fur colors, unique accessories, or legendary obedience levels. Try different IDs to uncover them all!</p>
+    <p>Some Bears might develop rare fur colors, unique collars, or legendary observation levels. Try different IDs to uncover them all!</p>
   </div>
 
   <!-- Footer -->
   <footer>
-    © 2025 Create a Llama | Growing Llama Companions Through Code
+    © 2025 Create a Bear | Growing Bear Companions Through Code
   </footer>
 
+  <!-- Script -->
   <script>
   (function() {
     // DOM Elements
     const connectWalletButton = document.getElementById('connect-wallet');
     const walletAddressDisplay = document.getElementById('wallet-address');
     const generatorSection = document.getElementById('generator-section');
-    const llamaInput = document.getElementById('llama-id');
+    const bearInput = document.getElementById('bear-id');
     const generateButton = document.getElementById('generate-button');
-    const llamaShowcase = document.getElementById('llama-showcase');
+    const bearShowcase = document.getElementById('bear-showcase');
     const loadingContainer = document.getElementById('loading-container');
     const logArea = document.getElementById('logArea');
 
@@ -472,7 +455,7 @@
           generatorSection.style.display = 'block';
           logMessage("Wallet connected successfully.", "success");
 
-          checkExistingLlama(userWalletAddress);
+          checkExistingBear(userWalletAddress);
         } catch (err) {
           console.error(err);
           logMessage("Failed to connect wallet.", "error");
@@ -485,41 +468,37 @@
 
     connectWalletButton.addEventListener('click', connectWallet);
 
-    // Llama Archetypes + ASCII
-    const LLAMA_TYPES = [
+    // Bear Archetypes + ASCII
+    const BEAR_TYPES = [
       {
-        breed: 'Alpaca',
-        traits: ['Gentle', 'Shy', 'Friendly'],
+        breed: 'Grizzly Bear',
+        traits: ['Fierce', 'Powerful', 'Territorial'],
         art: String.raw`
-    /\___/\
-   ( o.o  )
-   (  v  ) 
-   \_____/ 
- "So soft, so sweet!"
-        `
+    ʕ·ᴥ·ʔ
+      `
       },
       {
-        breed: 'Andean Llama',
-        traits: ['Strong', 'Endurance', 'Rugged'],
+        breed: 'Panda',
+        traits: ['Gentle', 'Lazy', 'Bamboo Lover'],
         art: String.raw`
-    /\___/\
-   (       )
-   /       \
-  (_________)
-"High altitudes are home."
-        `
+    ʕ·ᴥ·ʔ
+      `
       },
       {
-        breed: 'Wild Llama',
-        traits: ['Free-Roaming', 'Independent', 'Tough'],
+        breed: 'Black Bear',
+        traits: ['Agile', 'Clever', 'Quick'],
         art: String.raw`
-    /\___/\
-   ( o.o  )
-   (  v  ) 
-   \_____/ 
- "The wild awaits!"
-        `
+    ʕ•ᴥ•ʔ
+      `
       }
+    ];
+
+    const FUR_COLORS = [
+      'Brown Fur', 'Black Fur', 'White Fur', 'Grey Fur'
+    ];
+
+    const ACCESSORIES = [
+      'Red Scarf', 'Spiky Collar', 'Bandana', 'Bear Paw Gloves'
     ];
 
     // Basic ID check
@@ -538,39 +517,128 @@
       return Math.abs(hash);
     }
 
-    // Llama creation
-    function generateLlama(hash) {
-      const breedIndex = hash % LLAMA_TYPES.length;
-      const llamaType = LLAMA_TYPES[breedIndex];
+    // Bear creation
+    function generateBear(hash) {
+      const breedIndex = hash % BEAR_TYPES.length;
+      const colorIndex = (hash >> 2) % FUR_COLORS.length;
+      const accessoryIndex = (hash >> 4) % ACCESSORIES.length;
+      const observationLevel = (hash % 100) + 1;
+
+      const bearType = BEAR_TYPES[breedIndex];
       return {
-        breed: llamaType.breed,
-        traits: llamaType.traits,
-        asciiArt: llamaType.art
+        breed: bearType.breed,
+        furColor: FUR_COLORS[colorIndex],
+        accessory: ACCESSORIES[accessoryIndex],
+        trait: bearType.traits[hash % bearType.traits.length],
+        observationLevel: observationLevel,
+        asciiArt: bearType.art
       };
     }
 
     // Show/hide loading
     function showLoading() {
       loadingContainer.style.display = 'block';
-      llamaShowcase.innerHTML = '<h2>Your Llama Companion</h2>';
-      llamaShowcase.style.display = 'none';
+      bearShowcase.innerHTML = '<h2>Your Bear Companion</h2>';
+      bearShowcase.style.display = 'none';
     }
     function hideLoading() {
       loadingContainer.style.display = 'none';
     }
 
-    // Display Llama
-    function displayLlama(llama) {
-      const llamaCard = document.createElement('div');
-      llamaCard.className = 'gnome'; // reusing the same style class
-      llamaCard.innerHTML = `
-${llama.asciiArt}
-<p><strong>Breed:</strong> ${llama.breed}</p>
+    // Display Bear
+    function displayBear(bear) {
+      const bearCard = document.createElement('div');
+      bearCard.className = 'bear'; // reusing the same style class
+      bearCard.innerHTML = `
+${bear.asciiArt}
+<p><strong>Breed:</strong> ${bear.breed}</p>
+<p><strong>Fur Color:</strong> ${bear.furColor}</p>
+<p><strong>Personality Trait:</strong> ${bear.trait}</p>
+<p><strong>Accessory:</strong> ${bear.accessory}</p>
+<p><strong>Observation Level:</strong> ${bear.observationLevel}/100</p>
       `;
 
-      llamaShowcase.appendChild(llamaCard);
+      // Download button
+      const downloadButton = document.createElement('button');
+      downloadButton.className = 'download-btn';
+      downloadButton.textContent = 'Download Bear Info';
+      downloadButton.addEventListener('click', () => downloadBear(bear));
 
-      llamaShowcase.style.display = 'block';
+      // Share button
+      const shareButton = document.createElement('button');
+      shareButton.className = 'share-btn';
+      shareButton.textContent = 'Share on X';
+      shareButton.addEventListener('click', () => shareOnX(bear));
+
+      bearCard.appendChild(downloadButton);
+      bearCard.appendChild(shareButton);
+      bearShowcase.appendChild(bearCard);
+
+      bearShowcase.style.display = 'block';
+    }
+
+    // Download Bear
+    function downloadBear(bear) {
+      const bearDetails = `
+Bear Details:
+-------------------
+Breed: ${bear.breed}
+Fur Color: ${bear.furColor}
+Personality Trait: ${bear.trait}
+Accessory: ${bear.accessory}
+Observation Level: ${bear.observationLevel}/100
+
+ASCII Art:
+${bear.asciiArt}
+      `;
+      const blob = new Blob([bearDetails], { type: 'text/plain' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `${bear.breed.replace(/\s/g, '_')}_Bear.txt`;
+      link.click();
+    }
+
+    // Share on X
+    function shareOnX(bear) {
+      const message = `I just adopted a new ASCII Bear!
+
+Breed: ${bear.breed}
+Fur Color: ${bear.furColor}
+Trait: ${bear.trait}
+Accessory: ${bear.accessory}
+Observation: ${bear.observationLevel}/100
+
+#CreateABear
+@BearGeneratorSol
+
+`;
+      const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}`;
+      window.open(tweetUrl, '_blank');
+    }
+
+    // Logging
+    function logMessage(msg, type="info") {
+      const span = document.createElement("span");
+      span.classList.add(type);
+      span.innerText = msg + "\n";
+      logArea.appendChild(span);
+      logArea.scrollTop = logArea.scrollHeight;
+    }
+
+    // Check existing bear
+    function checkExistingBear(walletAddress) {
+      const bearData = localStorage.getItem(`bear_${walletAddress}`);
+      if (bearData) {
+        const existingBear = JSON.parse(bearData);
+        displayBear(existingBear);
+        logMessage("A Bear already exists for this wallet.", "warning");
+        generatorSection.style.display = 'none';
+      }
+    }
+
+    // Save Bear
+    function saveBear(walletAddress, bear) {
+      localStorage.setItem(`bear_${walletAddress}`, JSON.stringify(bear));
     }
 
     // Generate button event
@@ -580,9 +648,18 @@ ${llama.asciiArt}
         return;
       }
 
-      const llamaID = llamaInput.value.trim();
-      if (!validateID(llamaID)) {
+      const bearID = bearInput.value.trim();
+      if (!validateID(bearID)) {
         alert('Please enter a valid ID (at least 4 characters).');
+        return;
+      }
+
+      // Check again if a Bear is stored
+      const existingBear = localStorage.getItem(`bear_${userWalletAddress}`);
+      if (existingBear) {
+        alert('You already have a Bear for this wallet.');
+        logMessage("Attempted to adopt multiple Bears for the same wallet.", "warning");
+        checkExistingBear(userWalletAddress);
         return;
       }
 
@@ -590,12 +667,18 @@ ${llama.asciiArt}
 
       // Mimic asynchronous generation
       setTimeout(() => {
-        const combinedID = userWalletAddress + llamaID;
+        const combinedID = userWalletAddress + bearID;
         const hash = hashID(combinedID);
-        const newLlama = generateLlama(hash);
+        const newBear = generateBear(hash);
 
         hideLoading();
-        displayLlama(newLlama);
+        displayBear(newBear);
+        logMessage(`Bear "${newBear.breed}" adopted successfully.`, "success");
+
+        saveBear(userWalletAddress, newBear);
+
+        // Hide the generator to prevent multiple Bears
+        generatorSection.style.display = 'none';
       }, 2000);
     });
   })();
